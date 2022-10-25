@@ -1,12 +1,32 @@
 import Hamburger from "../assets/icon-hamburger.svg";
 import styled from "styled-components";
+import { useRef, useState } from "react";
+import Menu from "./Menu";
 
-const Header = () => {
+const Header = ({ setNavbarOpen, navbarOpen }) => {
+  const openMenu = () => {
+    setNavbarOpen(true);
+  };
+
+  const closeMenu = () => {
+    setNavbarOpen(false);
+  };
+
   return (
-    <HeaderDiv>
-      <H1>THE PLANETS</H1>
-      <img style={{ height: "17px", width: "24px" }} src={Hamburger} alt="" />
-    </HeaderDiv>
+    <>
+      <HeaderDiv>
+        <H1>THE PLANETS</H1>
+        <img
+          onClick={openMenu}
+          style={{ height: "17px", width: "24px" }}
+          src={Hamburger}
+          alt=""
+        />
+      </HeaderDiv>
+
+      <Line />
+      {navbarOpen && <Menu isAbsolute setNavbarOpen={setNavbarOpen} />}
+    </>
   );
 };
 
@@ -16,6 +36,7 @@ const HeaderDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 17px;
 `;
 
 const H1 = styled.h1`
@@ -26,4 +47,10 @@ const H1 = styled.h1`
   letter-spacing: -1px;
 
   color: white;
+`;
+
+const Line = styled.hr`
+  background: #ffffff;
+  mix-blend-mode: normal;
+  opacity: 0.2;
 `;

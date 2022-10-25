@@ -1,12 +1,28 @@
 
 
+import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './components/Header';
+import Menu from './components/Menu';
+import Planet from './components/Planet';
+import { useState } from 'react';
 
 function App() {
+  const [navbarOpen, setNavbarOpen] = useState(false);
   return (
+
     <FullBody >
-      <Header/>
+      <Header  navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}/>
+      <Routes>
+        <Route path='/' element={<Menu render navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}/>}/>
+        <Route path='/planet/:planet' element={<Planet navbarOpen={navbarOpen}/>}/>
+        <Route path='/planet' element={<Menu render navbarOpen={navbarOpen} setNavbarOpen={setNavbarOpen}/>}/>
+
+
+     
+      </Routes>
+    
+    
     </FullBody>
   );
 }
