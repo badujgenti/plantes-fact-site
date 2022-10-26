@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import data from "../data.json";
 
 export default function Planet({ navbarOpen }) {
   const { planet } = useParams();
+
+  const [type, setType] = useState("overview"); //ვინახავ თაიფს სთეითად, თავიდან უნდა იყოს ოვერვიუ
 
   const dataPlanet = data.find((item) => item.name === planet);
   console.log(dataPlanet.images.geology);
@@ -16,23 +18,35 @@ export default function Planet({ navbarOpen }) {
   return (
     <div>
       <Header>
-        <HeaderText color={dataPlanet.color}> OVERVIEW</HeaderText>
-        <HeaderText color={dataPlanet.color}>STRUCTURE</HeaderText>
-        <HeaderText color={dataPlanet.color}>SURFACE</HeaderText>
+        <HeaderText
+          onClick={() => setType("overview")}
+          color={dataPlanet.color}
+        >
+          {" "}
+          OVERVIEW
+        </HeaderText>
+        <HeaderText
+          onClick={() => setType("structure")}
+          color={dataPlanet.color}
+        >
+          {/* სეთთაიფი ცვლის პირველ თაიფს კლიკისას */}
+          STRUCTURE
+        </HeaderText>
+        <HeaderText onClick={() => setType("geology")} color={dataPlanet.color}>
+          SURFACE
+        </HeaderText>
       </Header>
       <Line />
-
       <PlanetImg
         src={process.env.PUBLIC_URL + dataPlanet.images.internal}
         alt="planet pic "
       />
-
       <Name>{planet.toUpperCase()}</Name>
-      <Text>{dataPlanet.overview.content}</Text>
-
+      <Text>{dataPlanet[type].content}</Text>{" "}
+      {/* თაიფს იცვლება სეთთაიფის მიხედვით  */}
       <Wiki>
         Source:{" "}
-        <a target="_blank" href={dataPlanet.overview.source}>
+        <a target="_blank" rel="noreferrer" href={dataPlanet[type].source}>
           Wikipedia
         </a>
         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
@@ -43,7 +57,6 @@ export default function Planet({ navbarOpen }) {
           />
         </svg>
       </Wiki>
-
       <TimeInfo>
         <p>ROTATION TIME</p>
         <Days>{dataPlanet.rotation.toUpperCase()}</Days>
@@ -67,6 +80,13 @@ export default function Planet({ navbarOpen }) {
 const Header = styled.div`
   display: flex;
   justify-content: space-around;
+  @media screen and (min-width: 768px) {
+    position: absolute;
+    bottom: 268px;
+    right: 55px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const HeaderText = styled.div`
@@ -90,6 +110,16 @@ const HeaderText = styled.div`
     border-bottom: 4px solid ${(props) => props.color};
     color: white;
     opacity: 1;
+  }
+  @media screen and (min-width: 768px) {
+    height: 40px;
+    width: 281px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+    mix-blend-mode: normal;
+    opacity: 0.2;
+    border: 1px solid #ffffff;
   }
 `;
 

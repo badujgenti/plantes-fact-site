@@ -2,22 +2,22 @@ import styled from "styled-components";
 import data from "../data.json";
 import { Link } from "react-router-dom";
 
-const Menu = ({ isAbsolute, setNavbarOpen }) => {
+const Menu = ({ isAbsolute, setNavbarOpen, forLargeScreen }) => {
   const LinkClick = () => {
     setNavbarOpen(false);
   };
 
   return (
-    <List isAbsolute={isAbsolute}>
+    <List isAbsolute={isAbsolute} forLargeScreen={forLargeScreen}>
       {data.map((planet) => (
         <NavDiv onClick={LinkClick}>
           <Linkz to={`planet/${planet.name}`} key={planet.name}>
             <OneLine>
               <Circle color={planet.color} />
               <Name> {planet.name.toUpperCase()} </Name>
-              <svg xmlns="http://www.w3.org/2000/svg" width="6" height="8">
+              <Svg xmlns="http://www.w3.org/2000/svg" width="6" height="8">
                 <path fill="none" stroke="#FFF" opacity=".4" d="M1 0l4 4-4 4" />
-              </svg>
+              </Svg>
             </OneLine>
             <Line />
           </Linkz>
@@ -34,6 +34,9 @@ const Circle = styled.div`
   width: 20px;
   border-radius: 10px;
   background-color: ${(props) => props.color};
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 const NavDiv = styled.div`
   height: 25px;
@@ -74,4 +77,16 @@ const Linkz = styled(Link)`
 const List = styled.ul`
   padding-top: 44px;
   position: ${(props) => (props.isAbsolute ? "absolute" : "static")};
+  display: ${(props) => props.forLargeScreen && "none"};
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    padding-top: 0px;
+  }
+`;
+
+const Svg = styled.svg`
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
