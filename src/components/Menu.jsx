@@ -53,6 +53,9 @@ const Name = styled.span`
   color: white;
   margin-right: auto;
   margin-left: 25px;
+  @media screen and (min-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 const OneLine = styled.div`
@@ -68,6 +71,8 @@ const Line = styled.hr`
   mix-blend-mode: normal;
   opacity: 0.1;
   margin-bottom: 20px;
+  @media screen and (min-width: 768px) {
+  }
 `;
 
 const Linkz = styled(Link)`

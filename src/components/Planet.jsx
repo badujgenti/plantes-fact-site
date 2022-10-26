@@ -33,7 +33,7 @@ export default function Planet({ navbarOpen }) {
           STRUCTURE
         </HeaderText>
         <HeaderText onClick={() => setType("geology")} color={dataPlanet.color}>
-          SURFACE
+          <p> SURFACE </p>
         </HeaderText>
       </Header>
       <Line />
@@ -41,38 +41,42 @@ export default function Planet({ navbarOpen }) {
         src={process.env.PUBLIC_URL + dataPlanet.images.internal}
         alt="planet pic "
       />
-      <Name>{planet.toUpperCase()}</Name>
-      <Text>{dataPlanet[type].content}</Text>{" "}
-      {/* თაიფს იცვლება სეთთაიფის მიხედვით  */}
-      <Wiki>
-        Source:{" "}
-        <a target="_blank" rel="noreferrer" href={dataPlanet[type].source}>
-          Wikipedia
-        </a>
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
-          <path
-            fill="#FFF"
-            d="M11.34.66C10.9.22 10.37 0 9.75 0h-7.5C1.63 0 1.1.22.66.66.22 1.1 0 1.63 0 2.25v7.5c0 .62.22 1.15.66 1.59.44.44.97.66 1.59.66h7.5c.62 0 1.15-.22 1.59-.66.44-.44.66-.97.66-1.59v-7.5c0-.62-.22-1.15-.66-1.59zM10 6.25a.467.467 0 01-.305.46.544.544 0 01-.195.04.465.465 0 01-.352-.149L8.023 5.476 3.852 9.648a.481.481 0 01-.352.149.48.48 0 01-.352-.149l-.796-.797a.48.48 0 01-.149-.351.48.48 0 01.149-.352l4.172-4.172-1.125-1.125c-.162-.15-.198-.333-.11-.546A.467.467 0 015.75 2H9.5c.135 0 .253.05.352.148A.48.48 0 0110 2.5v3.75z"
-            opacity=".5"
-          />
-        </svg>
-      </Wiki>
-      <TimeInfo>
-        <p>ROTATION TIME</p>
-        <Days>{dataPlanet.rotation.toUpperCase()}</Days>
-      </TimeInfo>
-      <TimeInfo>
-        <p>REVOLUTION TIME</p>
-        <Days>{dataPlanet.revolution.toUpperCase()}</Days>
-      </TimeInfo>
-      <TimeInfo>
-        <p>RADIUS</p>
-        <Days>{dataPlanet.radius.toUpperCase()}</Days>
-      </TimeInfo>
-      <TimeInfo>
-        <p>AVERAGE TEMP.</p>
-        <Days>{dataPlanet.temperature.toUpperCase()}</Days>
-      </TimeInfo>
+      <LeftInfo>
+        <Name>{planet.toUpperCase()}</Name>
+        <Text>{dataPlanet[type].content}</Text>{" "}
+        {/* თაიფს იცვლება სეთთაიფის მიხედვით  */}
+        <Wiki>
+          Source:{" "}
+          <a target="_blank" rel="noreferrer" href={dataPlanet[type].source}>
+            Wikipedia
+          </a>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12">
+            <path
+              fill="#FFF"
+              d="M11.34.66C10.9.22 10.37 0 9.75 0h-7.5C1.63 0 1.1.22.66.66.22 1.1 0 1.63 0 2.25v7.5c0 .62.22 1.15.66 1.59.44.44.97.66 1.59.66h7.5c.62 0 1.15-.22 1.59-.66.44-.44.66-.97.66-1.59v-7.5c0-.62-.22-1.15-.66-1.59zM10 6.25a.467.467 0 01-.305.46.544.544 0 01-.195.04.465.465 0 01-.352-.149L8.023 5.476 3.852 9.648a.481.481 0 01-.352.149.48.48 0 01-.352-.149l-.796-.797a.48.48 0 01-.149-.351.48.48 0 01.149-.352l4.172-4.172-1.125-1.125c-.162-.15-.198-.333-.11-.546A.467.467 0 015.75 2H9.5c.135 0 .253.05.352.148A.48.48 0 0110 2.5v3.75z"
+              opacity=".5"
+            />
+          </svg>
+        </Wiki>
+      </LeftInfo>
+      <LastBoxes>
+        <TimeInfo>
+          <p>ROTATION TIME</p>
+          <Days>{dataPlanet.rotation.toUpperCase()}</Days>
+        </TimeInfo>
+        <TimeInfo>
+          <p>REVOLUTION TIME</p>
+          <Days>{dataPlanet.revolution.toUpperCase()}</Days>
+        </TimeInfo>
+        <TimeInfo>
+          <p>RADIUS</p>
+          <Days>{dataPlanet.radius.toUpperCase()}</Days>
+        </TimeInfo>
+        <TimeInfo>
+          <p>AVERAGE TEMP.</p>
+          <Days>{dataPlanet.temperature.toUpperCase()}</Days>
+        </TimeInfo>
+      </LastBoxes>
     </div>
   );
 }
@@ -82,16 +86,17 @@ const Header = styled.div`
   justify-content: space-around;
   @media screen and (min-width: 768px) {
     position: absolute;
-    bottom: 268px;
+    bottom: 182px;
     right: 55px;
+    gap: 16px;
     display: flex;
     flex-direction: column;
+    color: white;
   }
 `;
 
 const HeaderText = styled.div`
   height: 40px;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,6 +125,10 @@ const HeaderText = styled.div`
     mix-blend-mode: normal;
     opacity: 0.2;
     border: 1px solid #ffffff;
+    cursor: pointer;
+  }
+  &&:hover {
+    background-color: ${(props) => props.color};
   }
 `;
 
@@ -127,6 +136,9 @@ const Line = styled.hr`
   background: #ffffff;
   mix-blend-mode: normal;
   opacity: 0.2;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Name = styled.h1`
@@ -138,6 +150,9 @@ const Name = styled.h1`
   text-align: center;
   color: white;
   margin-bottom: 16px;
+  @media screen and (min-width: 768px) {
+    font-size: 48px;
+  }
 `;
 
 const Text = styled.p`
@@ -150,6 +165,9 @@ const Text = styled.p`
   color: #ffffff;
   opacity: 0.5;
   margin-bottom: 32px;
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
 `;
 
 const Wiki = styled.p`
@@ -203,6 +221,14 @@ const TimeInfo = styled.div`
     mix-blend-mode: normal;
     opacity: 0.5;
   }
+  @media screen and (min-width: 768px) {
+    height: 88px;
+    width: 164px;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    align-items: flex-start;
+  }
 `;
 const Days = styled.h1`
   font-family: "Antonio", sans-serif;
@@ -219,4 +245,27 @@ const PlanetImg = styled.img`
   width: 150px;
   margin: 75px auto;
   display: block;
+  @media screen and (min-width: 768px) {
+    height: 369px;
+    width: 369px;
+  }
+`;
+
+const LeftInfo = styled.div`
+  @media screen and (min-width: 768px) {
+    height: 253px;
+    width: 339px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+`;
+
+const LastBoxes = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    gap: 11px;
+  }
 `;

@@ -54,6 +54,9 @@ const Line = styled.hr`
   background: #ffffff;
   mix-blend-mode: normal;
   opacity: 0.2;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const Burger = styled.img`
