@@ -14,13 +14,14 @@ const Header = ({ setNavbarOpen, navbarOpen }) => {
 
   return (
     <>
-      <HeaderDiv>
-        <H1>THE PLANETS</H1>
-        <Burger onClick={openMenu} src={Hamburger} alt="" />
-      </HeaderDiv>
-
+      <ForLargeScreen>
+        <HeaderDiv>
+          <H1>THE PLANETS</H1>
+          <Burger onClick={openMenu} src={Hamburger} alt="" />
+        </HeaderDiv>
+        <Menu forLargeScreen />
+      </ForLargeScreen>
       <Line />
-      <Menu forLargeScreen />
       {navbarOpen && <Menu isAbsolute setNavbarOpen={setNavbarOpen} />}
     </>
   );
@@ -33,7 +34,8 @@ const HeaderDiv = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 17px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1000px) {
+    padding-top: 10px;
   }
 `;
 
@@ -64,5 +66,13 @@ const Burger = styled.img`
   width: 24px;
   @media screen and (min-width: 768px) {
     display: none;
+  }
+`;
+
+const ForLargeScreen = styled.div`
+  @media screen and (min-width: 1000px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 `;

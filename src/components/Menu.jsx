@@ -56,6 +56,11 @@ const Name = styled.span`
   @media screen and (min-width: 768px) {
     font-size: 11px;
   }
+  @media screen and (min-width: 1000px) {
+    &&:hover {
+      color: ${(props) => props.color};
+    }
+  }
 `;
 
 const OneLine = styled.div`
@@ -64,6 +69,9 @@ const OneLine = styled.div`
   align-items: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  @media screen and (min-width: 1000px) {
+    margin-top: 0px;
+  }
 `;
 
 const Line = styled.hr`
@@ -87,6 +95,12 @@ const List = styled.ul`
   @media screen and (min-width: 768px) {
     display: flex;
     padding-top: 0px;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 500px;
+    margin-right: 200px;
+    padding-left: -44px;
+    display: ${(props) => !props.forLargeScreen && "none"};
   }
 `;
 
