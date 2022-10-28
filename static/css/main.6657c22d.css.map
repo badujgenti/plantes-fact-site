@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.6657c22d.css","mappings":"8GACA,EAGE,qBAAsB,CAFtB,QAAS,CACT,SAIF","sources":["index.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Antonio&family=League+Spartan:wght@400;700&display=swap');\n*{\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n \n \n}\n\n"],"names":[],"sourceRoot":""}
