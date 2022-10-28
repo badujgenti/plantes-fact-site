@@ -31,4 +31,7 @@ export default App;
 
 
 const FullBody = styled.div`
-padding:16px 24px;`
+padding:16px 24px;
+background-image: url("https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif");
+background-repeat:no-repeat;
+background-size:cover`
