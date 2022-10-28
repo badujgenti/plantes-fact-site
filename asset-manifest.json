@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/plantes-fact-site/static/css/main.6657c22d.css",
+    "main.js": "/plantes-fact-site/static/js/main.59665790.js",
+    "index.html": "/plantes-fact-site/index.html",
+    "static/media/icon-hamburger.svg": "/plantes-fact-site/static/media/icon-hamburger.05a40a49142005f6faf230286ab38214.svg",
+    "main.6657c22d.css.map": "/plantes-fact-site/static/css/main.6657c22d.css.map",
+    "main.59665790.js.map": "/plantes-fact-site/static/js/main.59665790.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6657c22d.css",
+    "static/js/main.59665790.js"
+  ]
+}
